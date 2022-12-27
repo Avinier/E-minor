@@ -1,0 +1,17 @@
+{
+  "program": {
+    "candyMachine": "Cv8SN3kS9dVXAgywR3dWH2wBueWwDDdx72EndEwur77X",
+    "candyMachineCreator": "G96zhB5E6UXn4CTGmoDRTkyoiemh4oEQLreVjPiYB5Bp",
+    "collectionMint": ""
+  },
+  "items": {
+    "0": {
+      "name": "Kanye Bear",
+      "image_hash": "7613ec81ab5813b6ff36ee913197d782740a6054199d62d630acb1f5514baac7",
+      "image_link": "https://arweave.net/_E8mFSLaBAXCDkO9l0V4C_huAeUoJbVLJaEmqI3Ydwo?ext=png",
+      "metadata_hash": "8f6bca270fdd079e8131a6b6eaf7d1f27329433e791d04b4b6c0fe2d21a41eb7",
+      "metadata_link": "https://arweave.net/uSOXPCJMZKyXGca-RZCrl2LWFCaLsh0ygwBRwnnKnIs",
+      "onChain": true
+    }
+  }
+}
