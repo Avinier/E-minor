@@ -11,9 +11,12 @@ const NftDisplay : FC = () => {
     const metaplex = Metaplex.make(connection).use(walletAdapterIdentity(wallet))
 
     async function fetchNfts() {
+      try {
         if (!wallet.connected) return;
 
-        const nfts = await metaplex.nfts().findAllByOwner({owner: wallet.publicKey})
+        const nfts = await metaplex.nfts().findAllByOwner({owner: metaplex.identity().publicKey})
+        
+        console.log(nfts)
         let fetchedNfts = []
         for(let i=0; i<nfts.length; i++) {
             let res = await fetch(nfts[i].uri)
@@ -23,6 +26,9 @@ const NftDisplay : FC = () => {
         console.log(fetchedNfts)
 
         setNftData(fetchedNfts)
+      } catch(err) {
+        console.log(err)
+      }
     }
 
     useEffect(() => {
