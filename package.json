@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "nodemon server/index.js",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -25,9 +25,12 @@
     "dotenv": "^16.0.3",
     "eslint": "8.30.0",
     "eslint-config-next": "13.0.7",
+    "express": "^4.18.2",
+    "http-proxy-middleware": "^2.0.6",
     "image-to-base64": "^2.2.0",
     "next": "13.0.7",
     "node-base64-image": "^2.0.4",
+    "nodemon": "^2.0.20",
     "openai": "^3.1.0",
     "react": "18.2.0",
     "react-auto-image-slider": "^1.0.0",
