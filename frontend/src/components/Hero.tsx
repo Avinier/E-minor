@@ -29,7 +29,7 @@ import NftDisplay from "./NftDisplay";
 
 export default function Hero() {
     return (
-        <section className="bg-[#000] w-[100vw] px-[150px]">
+        <section className="bg-[#000] h-[100vh] px-[150px]">
             <div className="py-[75px] flex justify-between items-center">
                 <div className="">
                     <h1 className="text-[100px] font-sans font-black text-accent">E-minor</h1>

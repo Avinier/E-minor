@@ -1,0 +1,15 @@
+{
+    "name": "Kanye Bear",
+    "symbol": "KNYE",
+    "description": "The Bear from Kanye's College Trilogy",
+    "image": "bear.png",
+    "attributes": [],
+    "properties": {
+      "files": [
+        {
+          "uri": "bear.png",
+          "type": "image/png"
+        }
+      ]
+    }
+  }
