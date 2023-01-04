@@ -12,6 +12,9 @@ import { clusterApiUrl } from "@solana/web3.js";
 require("@solana/wallet-adapter-react-ui/styles.css");
 import "../styles/globals.css"
 import MetaplexContextProvider from "../src/store/MetaplexContextProvider";
+import Navbar from "../src/components/Navbar";
+
+import Script from 'next/script'
 
 const App = ({ Component, pageProps }: AppProps) => {
   // Can be set to 'devnet', 'testnet', or 'mainnet-beta'
@@ -36,6 +39,22 @@ const App = ({ Component, pageProps }: AppProps) => {
       <WalletProvider wallets={wallets} autoConnect>
         <WalletModalProvider>
           <MetaplexContextProvider>
+          <Script strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"/>
+          <Script
+            id='google-analytics'
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+                __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'G-04F85PV1DC', {
+                page_path: window.location.pathname,
+                });
+                `,
+              }}
+          />
+            <Navbar/>
             <Component {...pageProps} />
           </MetaplexContextProvider>
         </WalletModalProvider>

@@ -1,7 +1,9 @@
+import { NextPage } from 'next'
 import Hero from '../src/components/Hero'
 
-export default function Home() {
-  return (
-    <Hero/>
-  )
+const HomePage : NextPage = () => {
+  return <Hero/>;
+  
 }
+
+export default HomePage;

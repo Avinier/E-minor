@@ -1,1 +1,10 @@
 Candy machine ID: Cv8SN3kS9dVXAgywR3dWH2wBueWwDDdx72EndEwur77X
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-04F85PV1DC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-04F85PV1DC');
+</script>
