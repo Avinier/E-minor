@@ -5,7 +5,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (req.method === "POST") {
     try {
       const replicate = new Replicate({
-        token: "3d763def2ad978d04c3e272f9c58da45e7e98444",
+        token: process.env.REPLICATE_STABLE_DIFFUSION_KEY,
       });
 
       const model = await replicate.models.get("stability-ai/stable-diffusion");
