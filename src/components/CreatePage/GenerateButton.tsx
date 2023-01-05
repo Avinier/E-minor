@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect } from "react";
+import React, { FC, useState } from "react";
 
 import { Metaplex, toMetaplexFile, walletAdapterIdentity, bundlrStorage, MetaplexFile, toMetaplexFileFromBrowser } from "@metaplex-foundation/js"
 import { Connection, clusterApiUrl } from "@solana/web3.js";
@@ -6,9 +6,9 @@ import { useWallet } from "@solana/wallet-adapter-react";
 
 const Generate : FC = () => {
   const connection = new Connection(clusterApiUrl("devnet"));
-  const wallet = useWallet();
-  const metaplex = Metaplex.make(connection).use(walletAdapterIdentity(wallet)).use(
-      bundlrStorage({
+const wallet = useWallet();
+const metaplex = Metaplex.make(connection).use(walletAdapterIdentity(wallet)).use(
+    bundlrStorage({
       address: "https://devnet.bundlr.network",
       providerUrl: "https://api.devnet.solana.com",
       timeout: 60000,
@@ -18,29 +18,23 @@ const Generate : FC = () => {
 
   const [value, setValue] = useState<string>()
 
-  useEffect(() => {
-   async function handle() {
-    fetch('/api/image-generation', {
-      method: 'POST',
-      headers : {
-        'Content-Type' : 'application/json'
-      },
-      body: JSON.stringify({prompt : "man in neo tokyo"}),
-    }).then((res) => console.log(res))
-   }
-
-   handle()
-  }, [])
-
   function changeHandler(event : any) {
   }
   
-    async function createNft() {
+    const createNft = async() => {
       console.log(value)
       if (value !== null) {
+        const imgResponse = await fetch('/api/image-generation', {
+          method: 'POST',
+          headers : {
+            'Content-Type' : 'application/json'
+          },
+          body: JSON.stringify({
+            prompt : "man in neo tokyo"
+          }),
+        })
 
-        // const data = await imgResponse.json();
-        // console.log(data.result)
+        console.log(await imgResponse.json())
       }
       
       // if (fileState) {
@@ -81,6 +75,7 @@ const Generate : FC = () => {
         <button className="font-black text-accent bg-purple--pastel rounded-full p-[20px] w-[50%] my-[25px] cursor-pointer" onClick={createNft}>
           Generate
         </button>
+        
         </>
     )
 }
