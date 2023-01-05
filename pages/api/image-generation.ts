@@ -1,32 +1,20 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { Configuration, OpenAIApi } from "openai";
+import Replicate from "replicate-js";
 
-const configuration = new Configuration({
-    apiKey: process.env.OPENAI_KEY,
-  });
-
-  const openai = new OpenAIApi(configuration);
 
 export default async function handler(req:NextApiRequest, res:NextApiResponse) {
-        const response = await openai.createImage({
-            "prompt": "A man in neo tokyo",
-           "n": 2,
-            "size": "256x256",
-        });
+        if (req.method === 'POST') {
+            try {
+                const replicate = new Replicate({
+                    token: process.env.REPLICATE_STABLE_DIFFUSION_KEY,
+                });
 
-        console.log(req.body.text)
-    
-        res.status(200).json({result: `${response.data}`})
-
-    // const completion = await openai.createCompletion({
-    //     model: 'text-davinci-002',
-    //     prompt: req.body.text,
-    //     temperature: 0.7,
-    //     top_p: 1,
-    //     frequency_penalty: 0,
-    //     presence_penalty: 0,
-  
-    //     max_tokens: 256,
-    //   });
-    
+                const model = await replicate.models.get("stability-ai/stable-diffusion");
+                const output = await model.predict({ prompt: "man in neo tokyo" });
+                res.status(200).json({result : `${output}`}) 
+            } catch(err) {
+                console.log(err)
+                res.status(500).json({error : `${err}`})
+            }
+        }
 }

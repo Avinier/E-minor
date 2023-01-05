@@ -1,5 +1,5 @@
 import { FC } from "react"
-import GenerateButton from "./GenerateButton";
+import Generate from "./GenerateButton";
 
 const Create : FC = () => {
     return (
@@ -8,8 +8,7 @@ const Create : FC = () => {
                 <article className="w-[45%]">
                     <h1 className="text-[60px] font-sans font-black text-accent">Create your NFT!</h1>
                     <h3 className="text-accent font-sans text-[20px] pb-[25px]">Enter your favourite lyrics and hit the create button.</h3>
-                    <textarea className="w-[90%] h-[200px] rounded-3xl bg-gold p-[20px] text-[20px] font-black text-accent focus:outline-none placeholder:text-stone-400" placeholder="fill me up baby..."/>
-                    <GenerateButton/>
+                    <Generate/>
                 <p className="font-black text-red-400">This feature is coming soon ^^</p>
 
                 </article>

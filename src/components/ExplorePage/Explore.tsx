@@ -1,7 +1,7 @@
 import { FC } from "react"
 import NftCard from "./NftCard";
 
-const Explore : FC = () => {
+const Explore : FC = () => {    
     return (
         <section className="bg-main">
             <article className="pt-[25px] px-[150px]">
