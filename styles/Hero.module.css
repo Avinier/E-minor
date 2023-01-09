@@ -1,0 +1,12 @@
+.carousel__container button {
+    display: none;
+}
+
+.carousel__container span {
+    display: none;
+}
+
+.carousel__container div {
+    width: 450px;
+    height: 450px;
+}

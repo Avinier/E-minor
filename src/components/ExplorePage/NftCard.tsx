@@ -19,7 +19,8 @@ const NftCard = (props : any) => {
                     exit={{opacity: [0.3, 0]}} 
                     className="absolute top-[60%] bg-gradient-to-t from-black text-bold w-[100%] h-[40%] text-accent rounded-lg overflow-hidden"
                 >
-                    Lorem, ipsum.er gthb y  ir68 ir 5t 56 y6tr s gb cfb 
+                    <p className="font-bold text-[30px]"> <span className="text-gold">{props.songData.song}</span> by <span className="text-pink--pastel">{props.songData.artist}</span></p>
+                    <p>{props.songData.lyrics}</p>
                 </motion.div>}
             </AnimatePresence>
         </motion.div>

@@ -4,5 +4,6 @@ namespace NodeJS {
     ARWEAVE_KEY: string;
     OPENAI_KEY: string;
     REPLICATE_STABLE_DIFFUSION_KEY: string;
+    NEXT_PUBLIC_MUSIXMATCH_KEY: string;
   }
 }

@@ -5,7 +5,9 @@ import { FC } from "react";
 const Navbar : FC = () => {
     return (
         <nav className="bg-main flex justify-between items-center px-[150px] py-[25px]">
-            <div className="font-black text-[25px]  text-gold">E-minor</div>
+            <div className="font-black text-[25px]  text-gold">
+                <Link href="/">E-minor</Link>
+            </div>
             <section className="text-accent flex justify-between items-center w-[45%]">
                 <div className="">
                     <Link href="/">Home</Link>

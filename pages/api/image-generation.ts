@@ -8,9 +8,18 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         token: process.env.REPLICATE_STABLE_DIFFUSION_KEY,
       });
 
+      const ver1point5 = "5b703f0fa41880f918ab1b12c88a25b468c18639be17515259fb66a83f4ad0a4"
+
       const model = await replicate.models.get("stability-ai/stable-diffusion");
-      const output = await model.predict({ prompt: "man in neo tokyo" });
+      const output = await model.predict({ prompt: `A illustration of the lyrics '${req.body.lyrics}'. ${req.body.song}, 8k resolution, high details and scenic.`, 
+                                            negative_prompt: "text, duplicate, grainy", 
+                                            num_inference_steps: 100,
+                                            scheduler: "K_EULER",
+                                            guidance_scale: 9.0,
+                                            width: 512, height: 512 
+                                          });
       res.status(200).json({ result: `${output}` });
+
     } catch (err) {
       console.log(err);
       res.status(500).json({ error: `${err}` });
