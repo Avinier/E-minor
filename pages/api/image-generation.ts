@@ -13,7 +13,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const model = await replicate.models.get("stability-ai/stable-diffusion");
       const output = await model.predict({ prompt: `A illustration of the lyrics '${req.body.lyrics}'. ${req.body.song}, 8k resolution, high details, and scenic.`, 
                                             negative_prompt: "text, duplicate, grainy, hands", 
-                                            num_inference_steps: 75,
+                                            num_inference_steps: 10,
                                             scheduler: "K_EULER",
                                             guidance_scale: 9.0,
                                             width: 512, height: 512 
