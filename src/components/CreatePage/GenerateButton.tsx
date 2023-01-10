@@ -27,7 +27,7 @@ const Generate = (props) => {
     const oaiData = await openaiResponse.json();
     console.log(oaiData.result.choices[0])
 
-    if (oaiData.result.choices[0].text !== '\n\nNo') {
+    if (oaiData.result.choices[0].text !== ('\n\nNo' || '\nNo' || 'No')) {
       let str = oaiData.result.choices[0].text.trim()
       let words = str.split(" - ")
       props.setSongData(`The song is ${words[0]} by ${words[1]}`)

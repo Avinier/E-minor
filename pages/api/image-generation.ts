@@ -11,8 +11,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const ver1point5 = "5b703f0fa41880f918ab1b12c88a25b468c18639be17515259fb66a83f4ad0a4"
 
       const model = await replicate.models.get("stability-ai/stable-diffusion");
-      const output = await model.predict({ prompt: `A illustration of the lyrics '${req.body.lyrics}'. ${req.body.song}, 8k resolution, high details, vibrance and scenic.`, 
-                                            negative_prompt: "text, duplicate, grainy", 
+      const output = await model.predict({ prompt: `A illustration of the lyrics '${req.body.lyrics}'. ${req.body.song}, 8k resolution, high details, and scenic.`, 
+                                            negative_prompt: "text, duplicate, grainy, hands", 
                                             num_inference_steps: 75,
                                             scheduler: "K_EULER",
                                             guidance_scale: 9.0,
