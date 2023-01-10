@@ -9,6 +9,7 @@ const Generate = (props) => {
   const [hasEntered, setHasEntered] = useState<boolean>(false)
   
   const mainHandler = async() => {
+    try {
     setValue(value => { return value.replace(/\n/g, "")})
     console.log(value)
     
@@ -52,6 +53,9 @@ const Generate = (props) => {
         const data = await imgResponse.json()
         console.log(data)
         props.setImage(data.result)
+      } catch(err) {
+        console.log(err)
+      }
     }
 
     return (
