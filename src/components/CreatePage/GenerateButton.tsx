@@ -14,27 +14,28 @@ const Generate = (props) => {
     console.log(value)
     
     // OpenAI COMPLETION
-    const openaiResponse = await fetch('/api/openai-functions', {
-      method: 'POST',
-      headers : {
-        'Content-Type' : 'application/json',
-      },
-      body: JSON.stringify({
-        lyrics : value
-      })
-    })
+    // const openaiResponse = await fetch('/api/openai-functions', {
+    //   method: 'POST',
+    //   headers : {
+    //     'Content-Type' : 'application/json',
+    //   },
+    //   body: JSON.stringify({
+    //     lyrics : value
+    //   })
+    // })
 
-    const oaiData = await openaiResponse.json();
-    console.log(oaiData.result.choices[0])
-    const oiAnswer = oaiData.result.choices[0].text
+    // const oaiData = await openaiResponse.json();
+    // console.log(oaiData.result.choices[0])
+    // const oiAnswer = oaiData.result.choices[0].text
 
-    if (oiAnswer !== '\nNo' || oiAnswer !== '\n\nNo' || oiAnswer !== 'No') {
-      let str = oiAnswer.trim()
-      let words = str.split(" - ")
-      props.setSongData(`The song is ${words[0]} by ${words[1]}`)
-    } else {
-      props.setSongData("Sorry this lyrics seems invalid, try again :(")
-    }
+    // if (oiAnswer !== '\nNo' || oiAnswer !== '\n\nNo' || oiAnswer !== 'No') {
+    //   let str = oiAnswer.trim()
+    //   let words = str.split(" - ")
+    //   props.setSongData(`The song is ${words[0]} by ${words[1]}`)
+    // } else {
+    //   props.setSongData("Sorry this lyrics seems invalid, try again :(")
+    //   return;
+    // }
 
     props.isValid(true)
 

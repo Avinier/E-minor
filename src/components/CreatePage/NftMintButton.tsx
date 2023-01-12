@@ -1,7 +1,5 @@
-import { FC, useState } from "react"
-
-import { Metaplex, toMetaplexFile, walletAdapterIdentity, bundlrStorage, MetaplexFile, toMetaplexFileFromBrowser } from "@metaplex-foundation/js"
-import { Connection, clusterApiUrl } from "@solana/web3.js";
+import { Metaplex, walletAdapterIdentity, bundlrStorage } from "@metaplex-foundation/js"
+import { Connection, clusterApiUrl, Keypair } from "@solana/web3.js";
 import { useWallet } from "@solana/wallet-adapter-react";
 
 const NftMintButton = (props) => {
@@ -17,9 +15,30 @@ const NftMintButton = (props) => {
 
     async function mintNft() {
         try {
+            // const collectionNftKeypair = Keypair.generate(); 
+            // console.log(collectionNftKeypair)        
+
+        // const collectionUri = (await metaplex.nfts().uploadMetadata({
+        //     name: "E-minor Collection",
+        //     description: "Your E-minor NFT Collection",
+        //     image: "../../../public/kdot.png"
+        // })).uri
+
+        // const collectionNft = (await metaplex.nfts().create({
+        //     uri: collectionUri,
+        //     name: "Your E-minor NFT Collection",
+        //     sellerFeeBasisPoints: 200,
+        //     symbol: "EMNORCLXN",
+        //     isCollection: true
+        //     collection: {
+        //         address: collectionNftKeypair.publicKey,
+        //         verified: true
+        //     }
+        // })).nft
+
             const { uri } = await metaplex.nfts().uploadMetadata({
-                name: "My NFT",
-                description: "My description",
+                name: `${props.song}`,
+                description: "Your lovely E-minor NFT",
                 image: `${props.image}`,
             });
             
@@ -30,23 +49,29 @@ const NftMintButton = (props) => {
                 name: "Song NFT",
                 sellerFeeBasisPoints: 200,
                 symbol: "EMNOR",
+                // collection: {
+                //     address: collectionNft.mint.address,
+                //     verified: true
+                // }
             })
 
-            console.log(
-                `Token Mint: https://explorer.solana.com/address/${nft.address.toString()}?cluster=devnet`
-            )
+            console.log(nft)
 
-            const nftsNumResponse = await fetch(`https://e-minor-6f0fb-default-rtdb.firebaseio.com/num_nfts.json`)
-            let NFTS_NUM = await nftsNumResponse.json();
-            NFTS_NUM = NFTS_NUM + 1;
+            // console.log(
+            //     `Token Mint: https://explorer.solana.com/address/${nft.address.toString()}?cluster=devnet`
+            // )
 
-            const nftsNumPost = await fetch(`https://e-minor-6f0fb-default-rtdb.firebaseio.com/num_nfts.json`, {
-            method: 'POST', 
-            headers: {
-                'Content-Type' : 'application/json'
-            },
-            body: JSON.stringify(NFTS_NUM)
-            })
+            // const nftsNumResponse = await fetch(`https://e-minor-6f0fb-default-rtdb.firebaseio.com/num_nfts.json`)
+            // let NFTS_NUM = await nftsNumResponse.json();
+            // NFTS_NUM = NFTS_NUM + 1;
+
+            // const nftsNumPost = await fetch(`https://e-minor-6f0fb-default-rtdb.firebaseio.com/num_nfts.json`, {
+            // method: 'POST', 
+            // headers: {
+            //     'Content-Type' : 'application/json'
+            // },
+            // body: JSON.stringify(NFTS_NUM)
+            // })
             
         } catch(err) {
             console.log(err)

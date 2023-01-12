@@ -19,8 +19,8 @@ const Create : FC = () => {
                     <h3 className="text-accent font-sans text-[20px] pb-[25px]">Enter your favourite lyrics and hit the create button.</h3>
                     <Generate setImage={setImageUrl} setSongData={setSongData} songData={songData} isValid={setIsValidLyrics}/>
                 </article>
-                {imageUrl ? <Image src={imageUrl} alt="nft image" width={450} height={450} className="rounded-lg"/> :
-                <div className="bg-grey h-[450px] w-[450px] p-[25px] rounded-lg">
+                {imageUrl ? <Image src={imageUrl} alt="nft image" width={400} height={400} className="rounded-lg"/> :
+                <div className="bg-grey h-[400px] w-[400px] p-[25px] rounded-lg">
                     {isValidLyrics && <p className="text-[20px] font-black text-accent">{songData}</p>}
                     {isValidLyrics && 
                         <ReactLoading
@@ -33,8 +33,8 @@ const Create : FC = () => {
                     }
                 </div>
                  }
-                <div className="absolute top-[72%] left-[75%]">
-                    {imageUrl && <NftMintButton image={imageUrl}/>}
+                <div className="absolute top-[70%] left-[76%]">
+                    {imageUrl && <NftMintButton image={imageUrl} song={songData}/>}
                 </div>
             </div>
         </section>

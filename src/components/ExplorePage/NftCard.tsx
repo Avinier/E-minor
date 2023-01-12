@@ -11,7 +11,7 @@ const NftCard = (props : any) => {
             onHoverEnd={() => {setHoverState(false)}}
             
         >
-            <Image src={props.image} alt="iengb" className="object-cover rounded-lg" width={450} height={450}/>
+            <Image src={props.image} alt="iengb" className="object-cover rounded-lg" width={400} height={400}/>
             <AnimatePresence>
                 {hoverState && 
                 <motion.div transition={{duration: 0.5, type: "tween"}} 
