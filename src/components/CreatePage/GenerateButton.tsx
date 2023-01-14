@@ -10,6 +10,7 @@ const Generate = (props) => {
 
   const mainHandler = async () => {
     try {
+      props.isValid(false)
       setValue(value => { return value.replace(/\n/g, "") })
       console.log(value)
 
@@ -28,13 +29,12 @@ const Generate = (props) => {
       console.log(oaiData.result.choices[0])
       const oiAnswer = oaiData.result.choices[0].text
 
-      if (oiAnswer !== '\nNo' || oiAnswer !== '\n\nNo' || oiAnswer !== 'No') {
+      if (oiAnswer !== '\nNo' && oiAnswer !== '\n\nNo' && oiAnswer !== 'No') {
         let str = oiAnswer.trim()
         let words = str.split(" - ")
         props.setSongData(`The song is ${words[0]} by ${words[1]}`)
       } else {
         props.setSongData("Sorry this lyrics seems invalid, try again :(")
-        return;
       }
 
       props.isValid(true)
@@ -62,8 +62,8 @@ const Generate = (props) => {
 
   return (
     <>
-      <textarea className="w-[90%] h-[200px] rounded-3xl bg-gold p-[20px] text-[20px] font-black text-accent focus:outline-none placeholder:text-stone-400"
-        placeholder="fill me up baby..."
+      <textarea className="w-[90%] h-[200px] rounded-3xl bg-grey backdrop-blur-lg backdrop-saturate-50 p-[20px] text-[20px] font-black text-accent focus:outline-none placeholder:text-stone-400"
+        placeholder="Enter your favourite lyrics and hit the create button..."
         onChange={(event) => { setValue(event.target.value); setHasEntered(true) }}
       />
       <motion.button

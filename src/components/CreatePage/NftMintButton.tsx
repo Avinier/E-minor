@@ -2,6 +2,7 @@ import { Metaplex, walletAdapterIdentity, bundlrStorage } from "@metaplex-founda
 import { Connection, clusterApiUrl, Keypair } from "@solana/web3.js";
 import { useWallet } from "@solana/wallet-adapter-react";
 
+
 const NftMintButton = (props) => {
     const connection = new Connection(clusterApiUrl("devnet"));
     const wallet = useWallet();
@@ -15,26 +16,26 @@ const NftMintButton = (props) => {
 
     async function mintNft() {
         try {
-            // const collectionNftKeypair = Keypair.generate(); 
-            // console.log(collectionNftKeypair)        
+            const collectionNftKeypair = Keypair.generate(); 
+            console.log(collectionNftKeypair)        
 
-        // const collectionUri = (await metaplex.nfts().uploadMetadata({
-        //     name: "E-minor Collection",
-        //     description: "Your E-minor NFT Collection",
-        //     image: "../../../public/kdot.png"
-        // })).uri
+        const collectionUri = (await metaplex.nfts().uploadMetadata({
+            name: "E-minor Collection",
+            description: "Your E-minor NFT Collection",
+            image: "../../../public/kdot.png"
+        })).uri
 
-        // const collectionNft = (await metaplex.nfts().create({
-        //     uri: collectionUri,
-        //     name: "Your E-minor NFT Collection",
-        //     sellerFeeBasisPoints: 200,
-        //     symbol: "EMNORCLXN",
-        //     isCollection: true
-        //     collection: {
-        //         address: collectionNftKeypair.publicKey,
-        //         verified: true
-        //     }
-        // })).nft
+        const collectionNft = (await metaplex.nfts().create({
+            uri: collectionUri,
+            name: "Your E-minor NFT Collection",
+            sellerFeeBasisPoints: 200,
+            symbol: "EMNORCLXN",
+            isCollection: true
+            collection: {
+                address: collectionNftKeypair.publicKey,
+                verified: true
+            }
+        })).nft
 
             const { uri } = await metaplex.nfts().uploadMetadata({
                 name: `${props.song}`,
@@ -43,10 +44,17 @@ const NftMintButton = (props) => {
             });
             
             console.log(uri)
+            props.isValid(false)
+            
+            setTimeout(() => {
+                props.isMinted(true)
+            }, 1000)
+            props.isMinted(false)
+
 
             const {nft} = await metaplex.nfts().create({
                 uri: uri,
-                name: "Song NFT",
+                name: `${props.song}`,
                 sellerFeeBasisPoints: 200,
                 symbol: "EMNOR",
                 // collection: {
