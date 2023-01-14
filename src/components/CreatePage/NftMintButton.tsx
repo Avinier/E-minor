@@ -16,26 +16,26 @@ const NftMintButton = (props) => {
 
     async function mintNft() {
         try {
-            const collectionNftKeypair = Keypair.generate(); 
-            console.log(collectionNftKeypair)        
+        //     const collectionNftKeypair = Keypair.generate(); 
+        //     console.log(collectionNftKeypair)        
 
-        const collectionUri = (await metaplex.nfts().uploadMetadata({
-            name: "E-minor Collection",
-            description: "Your E-minor NFT Collection",
-            image: "../../../public/kdot.png"
-        })).uri
+        // const collectionUri = (await metaplex.nfts().uploadMetadata({
+        //     name: "E-minor Collection",
+        //     description: "Your E-minor NFT Collection",
+        //     image: "../../../public/kdot.png"
+        // })).uri
 
-        const collectionNft = (await metaplex.nfts().create({
-            uri: collectionUri,
-            name: "Your E-minor NFT Collection",
-            sellerFeeBasisPoints: 200,
-            symbol: "EMNORCLXN",
-            isCollection: true
-            collection: {
-                address: collectionNftKeypair.publicKey,
-                verified: true
-            }
-        })).nft
+        // const collectionNft = (await metaplex.nfts().create({
+        //     uri: collectionUri,
+        //     name: "Your E-minor NFT Collection",
+        //     sellerFeeBasisPoints: 200,
+        //     symbol: "EMNORCLXN",
+        //     isCollection: true
+        //     collection: {
+        //         address: collectionNftKeypair.publicKey,
+        //         verified: true
+        //     }
+        // })).nft
 
             const { uri } = await metaplex.nfts().uploadMetadata({
                 name: `${props.song}`,
