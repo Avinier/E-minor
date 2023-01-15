@@ -26,7 +26,7 @@ const InfoAccordian : FC = () => {
     return(
         <div className="absolute top-[20%] w-[140%]">
             <div className="flex items-center">
-                <h4 className="text-purple--pastel text-[25px]">Somethings to keep in mind :)</h4>
+                <h4 className="text-purple--pastel text-[25px]">Somethings to keep in mind 🙂</h4>
                 <button onClick={() => {setShowDetails(!showDetails)}} className="text-pink--pastel text-[18px] w-[30px] h-[30px] font-black ml-[20px] border-pink--pastel border-[2px] rounded-full">{!showDetails ? `+` : `-`}</button>
             </div>
             <AnimatePresence>
