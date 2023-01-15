@@ -42,7 +42,7 @@ const InfoAccordian : FC = () => {
                 >
                     <li className="text-purple--pastel text-[18px] pb-[15px]">Make sure you only input the verse of the song and nothing else.</li>
                     <li className="text-purple--pastel text-[18px] pb-[15px]">Please try to have some famous known verse, preferably the hook, which makes the song recognisable.</li>
-                    <li className="text-purple--pastel text-[18px] pb-[15px]">Some songs' verse maybe sampled, and the ai will recognise the original song and not yours, fret not, try again.</li>
+                    <li className="text-purple--pastel text-[18px] pb-[15px]">Some songs&apos; verse maybe sampled, and the ai will recognise the original song and not yours, fret not, try again.</li>
                 </motion.ul>}
             </AnimatePresence>
         </div>
