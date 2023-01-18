@@ -28,8 +28,8 @@ export default function Hero() {
         <section className="bg-[#000] h-[100vh] px-[150px]">
             <div className="py-[75px] flex justify-between items-center">
                 <div className="">
-                    <h1 className="text-[100px] font-sans font-black text-accent">E-minor</h1>
-                    <h3 className="text-accent font-sans text-[30px] pb-[25px]">NFT Your favourite song verses on Solana!</h3>
+                    <h1 className="text-[75px] font-sans font-black text-accent">NFT your favourite song verses in minutes!</h1>
+                    <h3 className="text-accent font-sans text-[30px] pb-[25px]">Get AI-generated Solana NFTs of your most personal song verses.</h3>
                     <WalletMultiButton/>
                     <p className="font-bold text-purple--pastel my-[20px]">[Currently only available on devnet ^^]</p>
                 </div>
