@@ -36,12 +36,13 @@ const Create : FC = () => {
     const [isMinted, setIsMinted] = useState<boolean>()
 
     return (
-        <section className="bg-[#000] w-[100vw] px-[150px]">
+        <section className="bg-[#000] w-[100vw] h-[86.05vh] px-[150px]">
             {isMinted && <MintedPopup/>}
             <div className=" relative py-[75px] flex justify-between items-center">
                 <article className="w-[45%] relative">
-                    <h1 className="text-[60px] font-sans font-black text-accent pb-[60px]">Create your NFT!</h1>
-                    <InfoAccordian/>
+                    <h1 className="text-[60px] font-sans font-black text-accent">Create your NFT!</h1>
+                    <p className="font-bold text-purple--pastel pb-[20px]">[Currently only available on devnet]</p>
+
                     <Generate setImage={setImageUrl} setSongData={setSongData} songData={songData} isValid={setIsValidLyrics}/>
                 </article>
                 {imageUrl ? <Image src={imageUrl} alt="nft image" width={400} height={400} className="rounded-lg"/> :

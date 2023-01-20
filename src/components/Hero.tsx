@@ -1,7 +1,7 @@
-import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import {Carousel}  from 'react-responsive-carousel';
+import Link from "next/link";
 
 export function CarouselSection() {
     return (
@@ -25,18 +25,18 @@ export function CarouselSection() {
 
 export default function Hero() {
     return (
-        <section className="bg-[#000] h-[100vh] px-[150px]">
-            <div className="py-[75px] flex justify-between items-center">
+        <section className="bg-[#000] h-[86.05vh] px-[150px]">
+            <div className="py-[100px] flex justify-between items-center">
                 <div className="">
-                    <h1 className="text-[75px] font-sans font-black text-accent">NFT your favourite song verses in minutes!</h1>
-                    <h3 className="text-accent font-sans text-[30px] pb-[25px]">Get AI-generated Solana NFTs of your most personal song verses.</h3>
-                    <WalletMultiButton/>
-                    <p className="font-bold text-purple--pastel my-[20px]">[Currently only available on devnet ^^]</p>
+                    <h1 className="text-[80px] font-sans font-black leading-[80px] text-accent text-center">Your favourite song. Visualized.</h1>
+                    <h3 className="text-accent font-sans text-[25px] py-[30px] text-center">Get AI-generated Solana NFTs out of your favourite song verses</h3>
+                    <button className="bg-accent w-fit font-sans font-bold rounded-md px-[30px] py-[12px] ml-[40%]">
+                        <Link href="/create">Visualize a verse</Link>
+                    </button>
                 </div>
-                <div className="bg-grey h-[450px] w-[450px] rounded-lg">
+                {/* <div className="bg-grey h-[450px] w-[450px] rounded-lg">
                     <Image src='/starboy.jpeg' alt="iengb" className="object-cover rounded-lg" width={450} height={450}/>
-                    {/* <CarouselSection/> */}
-                </div>
+                </div> */}
             </div>
         </section>
     )

@@ -1,14 +1,15 @@
 import Link from "next/link";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import { FC } from "react";
+import navClasses from "../../styles/Navbar.module.css"
 
 const Navbar : FC = () => {
     return (
         <nav className="bg-main flex justify-between items-center px-[150px] py-[25px]">
-            <div className="font-black text-[25px]  text-gold">
+            <div className="font-black text-[25px]  text-accent">
                 <Link href="/">E-minor</Link>
             </div>
-            <section className="text-accent flex justify-between items-center w-[45%]">
+            <section className="text-accent flex justify-between items-center w-[45%] font-bold">
                 <div className="">
                     <Link href="/">Home</Link>
                 </div>
@@ -18,7 +19,9 @@ const Navbar : FC = () => {
                 <div className="">
                     <Link href="/explore">Explore</Link>
                 </div>
-                <WalletMultiButton/>
+                <div className={navClasses.wallet}>
+                    <WalletMultiButton/>
+                </div>
             </section>
         </nav>
     )
