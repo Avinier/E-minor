@@ -1,5 +1,5 @@
 import { Metaplex, walletAdapterIdentity, bundlrStorage } from "@metaplex-foundation/js"
-import { Connection, clusterApiUrl, Keypair } from "@solana/web3.js";
+import { Connection, clusterApiUrl, Keypair, PublicKey } from "@solana/web3.js";
 import { useWallet } from "@solana/wallet-adapter-react";
 
 
@@ -15,7 +15,6 @@ const NftMintButton = (props) => {
     )
 
     async function mintNft() {
-        try {
         //     const collectionNftKeypair = Keypair.generate(); 
         //     console.log(collectionNftKeypair)        
 
@@ -36,34 +35,36 @@ const NftMintButton = (props) => {
         //         verified: true
         //     }
         // })).nft
-
+        const clxnMintAddress = new PublicKey("9RWXqc79LVcqaTJXfNaJE7SeEKBpuzbBUFBeuMk5hnpc");
+        
             const { uri } = await metaplex.nfts().uploadMetadata({
                 name: `${props.song}`,
-                description: "Your lovely E-minor NFT",
+                description: `${props.songData}`,
                 image: `${props.image}`,
             });
             
             console.log(uri)
-            props.isValid(false)
-            
-            setTimeout(() => {
-                props.isMinted(true)
-            }, 1000)
-            props.isMinted(false)
-
+            props.isValid(false)          
 
             const {nft} = await metaplex.nfts().create({
                 uri: uri,
                 name: `${props.song}`,
                 sellerFeeBasisPoints: 200,
                 symbol: "EMNOR",
-                // collection: {
-                //     address: collectionNft.mint.address,
-                //     verified: true
-                // }
+                collection: clxnMintAddress
             })
 
             console.log(nft)
+
+            props.isMinted(true)
+            
+            setTimeout(() => {
+                props.isMinted(false)
+            }, 3000);
+
+            setTimeout(() => {
+                window.location.reload();
+            }, 1000)
 
             // console.log(
             //     `Token Mint: https://explorer.solana.com/address/${nft.address.toString()}?cluster=devnet`
@@ -81,9 +82,6 @@ const NftMintButton = (props) => {
             // body: JSON.stringify(NFTS_NUM)
             // })
             
-        } catch(err) {
-            console.log(err)
-        }
     }
     return (
         <button onClick={mintNft} className="px-[50px] py-[15px] bg-[#512da8] rounded-md text-white font-bold">Mint as NFT!</button>

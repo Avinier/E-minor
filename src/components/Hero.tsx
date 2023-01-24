@@ -25,7 +25,7 @@ export function CarouselSection() {
 
 export default function Hero() {
     return (
-        <section className="bg-[#000] h-[86.05vh] px-[150px]">
+        <section className="bg-[#000] overflow-y-hidden h-[87vh] px-[150px]">
             <div className="py-[100px] flex justify-between items-center">
                 <div className="">
                     <h1 className="text-[80px] font-sans font-black leading-[80px] text-accent text-center">Your favourite song. Visualized.</h1>

@@ -12,18 +12,18 @@ import InfoAccordian from "./InfoAccordian";
   function MintedPopup() {
     return (
         <AnimatePresence>
-        <motion.div
-            key="startpop"
-            // variants={variants}
-            initial={{y: "-100vh"}}
-            animate={{y: "0",
-            transition: {duration: 0.1, type: "spring", damping: 25, stiffness: 500},
-            }}
-            exit={{y: "-100vh"}}
-            className="px-[40px] py-[20px] bg-green-700 text-accent font-bold"
-        >
-            NFT Minted!
-        </motion.div>
+            <motion.div
+                key="startpop"
+                // variants={variants}
+                initial={{y: "-100vh"}}
+                animate={{y: "0",
+                transition: {duration: 0.1, type: "spring", damping: 25, stiffness: 500},
+                }}
+                exit={{y: "-100vh"}}
+                className="px-[30px] py-[15px] w-[200px] mx-auto rounded-md bg-green-700 text-accent text-center font-bold"
+            >
+                NFT Minted!
+            </motion.div>
       </AnimatePresence>
 
     );
@@ -32,22 +32,24 @@ import InfoAccordian from "./InfoAccordian";
 const Create : FC = () => {
     const [imageUrl, setImageUrl] = useState<string>(null)
     const [songData, setSongData] = useState<string>("")
+    const [songName, setSongName] = useState<string>("")
+
     const [isValidLyrics, setIsValidLyrics] = useState<boolean>()
     const [isMinted, setIsMinted] = useState<boolean>()
 
     return (
-        <section className="bg-[#000] w-[100vw] h-[86.05vh] px-[150px]">
+        <section className="bg-[#000] w-[100vw] h-[100vh] overflow-y-hidden px-[150px]">
             {isMinted && <MintedPopup/>}
             <div className=" relative py-[75px] flex justify-between items-center">
-                <article className="w-[45%] relative">
-                    <h1 className="text-[60px] font-sans font-black text-accent">Create your NFT!</h1>
-                    <p className="font-bold text-purple--pastel pb-[20px]">[Currently only available on devnet]</p>
+                <article className="w-[45%] relative flex flex-col items-center">
+                    <h1 className="text-[60px] font-sans font-black text-accent text-center">Create your NFT!</h1>
+                    <p className="font-bold text-purple--pastel pb-[20px] text-center">[Currently only available on devnet]</p>
 
-                    <Generate setImage={setImageUrl} setSongData={setSongData} songData={songData} isValid={setIsValidLyrics}/>
+                    <Generate setImage={setImageUrl} setSongData={setSongData} setSongName={setSongName} songData={songData} isValid={setIsValidLyrics}/>
                 </article>
                 {imageUrl ? <Image src={imageUrl} alt="nft image" width={400} height={400} className="rounded-lg"/> :
-                <div className="bg-grey h-[400px] w-[400px] p-[25px] rounded-lg">
-                    {isValidLyrics && <p className="text-[18px] font-black text-accent">{songData}</p>}
+                <div className="bg-[#111] h-[400px] w-[400px] p-[25px] rounded-lg">
+                    <p className="text-[18px] font-black text-accent text-center">{songData}</p>
                     {isValidLyrics && 
                         <ReactLoading
                         type="spinningBubbles"
@@ -60,7 +62,7 @@ const Create : FC = () => {
                 </div>
                  }
                 <div className="absolute top-[70%] left-[76%]">
-                    {imageUrl && <NftMintButton image={imageUrl} song={songData} isValid={setIsValidLyrics} isMinted={setIsMinted}/>}
+                    {imageUrl && <NftMintButton image={imageUrl} song={songName} songData={songData} isValid={setIsValidLyrics} isMinted={setIsMinted}/>}
                 </div>
             </div>
         </section>

@@ -9,12 +9,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       });
 
       const model = await replicate.models.get("stability-ai/stable-diffusion", "27b93a2413e7f36cd83da926f3656280b2931564ff050bf9575f1fdf9bcd7478");
-      const output = await model.predict({ prompt: `An illustration of the lyrics '${req.body.lyrics}'. ${req.body.song},triadic color scheme, 8k resolution, realistic, highly detailed, epic composition, art by Greg Tocchini.`, 
-                                            negative_prompt: "text, hands, duplication", 
+      const output = await model.predict({ prompt: `An illustration of the lyrics '${req.body.lyrics}'. ${req.body.song}triadic color scheme, 8k resolution, highly detailed, epic composition by greg tocchini, virgil finlay. Official art`, 
+                                            negative_prompt: "text, hands, duplication, dispropotion", 
                                             num_inference_steps: 85,
                                             scheduler: "K_EULER",
                                             guidance_scale: 7,
-                                            width: 448, height: 448
+                                            width: 512, height: 512
                                           });
       res.status(200).json({ result: `${output}` });
 

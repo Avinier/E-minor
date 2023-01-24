@@ -31,16 +31,12 @@ const Generate = (props) => {
 
       if (oiAnswer !== '\nNo' && oiAnswer !== '\n\nNo' && oiAnswer !== 'No') {
         let str = oiAnswer.trim()
-        let words = str.split(" - ")
+        let words = str.split("-")
+        props.setSongName(`${words[0]}`)
         props.setSongData(`The song is ${words[0]} by ${words[1]}`)
-      } else {
-        props.setSongData("Sorry this lyrics seems invalid, try again :(")
-      }
+        props.isValid(true)
 
-      props.isValid(true)
-
-
-      // IMAGE GENERATION
+        // IMAGE GENERATION
       const imgResponse = await fetch('/api/image-generation', {
         method: 'POST',
         headers: {
@@ -55,6 +51,15 @@ const Generate = (props) => {
       const data = await imgResponse.json()
       console.log(data)
       props.setImage(data.result)
+
+      } else {
+        props.isValid(false)
+        props.setSongData("Sorry this lyrics seems invalid, try again :(")
+
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000)
+      }
     } catch (err) {
       console.log(err)
     }
@@ -62,18 +67,18 @@ const Generate = (props) => {
 
   return (
     <>
-      <textarea className="w-[90%] h-[200px] rounded-3xl bg-grey backdrop-blur-lg backdrop-saturate-50 p-[20px] text-[20px] font-black text-accent focus:outline-none placeholder:text-stone-400"
+      <textarea className="w-[90%] h-[200px] rounded-3xl bg-[#111] backdrop-blur-lg backdrop-saturate-50 p-[20px] text-[20px] font-black text-center text-accent focus:outline-none placeholder:text-stone-400"
         placeholder="Enter your favourite lyrics and hit the create button..."
         onChange={(event) => { setValue(event.target.value); setHasEntered(true) }}
       />
       <motion.button
-        className="font-black text-accent bg-pink--pastel rounded-full p-[20px] w-[50%] my-[25px] cursor-pointer disabled:bg-[#9A5043] disabled:cursor-default"
+        className="bg-accent w-fit font-sans font-bold rounded-md px-[75px] py-[12px] mt-[20px] cursor-pointer disabled:cursor-default"
         onClick={mainHandler}
         disabled={!hasEntered}
         whileHover={{ scale: 1.1 }}
         transition={{ duration: 0.3, type: "tween" }}
       >
-        Generate
+        Visualize
       </motion.button>
     </>
   )
