@@ -5,14 +5,13 @@ import { motion } from "framer-motion";
 const PROXY_URL = "https://cors-anywhere.herokuapp.com/";
 
 const Generate = (props) => {
-  const [value, setValue] = useState<string>(null)
   const [hasEntered, setHasEntered] = useState<boolean>(false)
 
   const mainHandler = async () => {
     try {
       props.isValid(false)
-      setValue(value => { return value.replace(/\n/g, "") })
-      console.log(value)
+      props.setValue(value => { return value.replace(/\n/g, "") })
+      console.log(props.value)
 
       // OpenAI COMPLETION
       const openaiResponse = await fetch('/api/openai-functions', {
@@ -21,7 +20,7 @@ const Generate = (props) => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          lyrics: value
+          lyrics: props.value
         })
       })
 
@@ -29,7 +28,7 @@ const Generate = (props) => {
       console.log(oaiData.result.choices[0])
       const oiAnswer = oaiData.result.choices[0].text
 
-      if (oiAnswer !== '\nNo' && oiAnswer !== '\n\nNo' && oiAnswer !== 'No') {
+      if (oiAnswer !== '\nNo' && oiAnswer !== '\n\nNo' && oiAnswer !== 'No' && oiAnswer !== '\n\nNo.') {
         let str = oiAnswer.trim()
         let words = str.split("-")
         props.setSongName(`${words[0]}`)
@@ -43,7 +42,7 @@ const Generate = (props) => {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          lyrics: value,
+          lyrics: props.value,
           song: props.songData
         }),
       })
@@ -54,11 +53,11 @@ const Generate = (props) => {
 
       } else {
         props.isValid(false)
-        props.setSongData("Sorry this lyrics seems invalid, try again :(")
+        props.setSongData("Sorry this lyrics is unrecognisable, please try again")
 
         setTimeout(() => {
           window.location.reload();
-        }, 2000)
+        }, 6000)
       }
     } catch (err) {
       console.log(err)
@@ -69,7 +68,7 @@ const Generate = (props) => {
     <>
       <textarea className="w-[90%] h-[200px] rounded-3xl bg-[#111] backdrop-blur-lg backdrop-saturate-50 p-[20px] text-[20px] font-black text-center text-accent focus:outline-none placeholder:text-stone-400"
         placeholder="Enter your favourite lyrics and hit the create button..."
-        onChange={(event) => { setValue(event.target.value); setHasEntered(true) }}
+        onChange={(event) => { props.setValue(event.target.value); setHasEntered(true) }}
       />
       <motion.button
         className="bg-accent w-fit font-sans font-bold rounded-md px-[75px] py-[12px] mt-[20px] cursor-pointer disabled:cursor-default"

@@ -35,6 +35,8 @@ const NftMintButton = (props) => {
         //         verified: true
         //     }
         // })).nft
+
+        
         const clxnMintAddress = new PublicKey("9RWXqc79LVcqaTJXfNaJE7SeEKBpuzbBUFBeuMk5hnpc");
         
             const { uri } = await metaplex.nfts().uploadMetadata({
@@ -44,7 +46,13 @@ const NftMintButton = (props) => {
             });
             
             console.log(uri)
-            props.isValid(false)          
+            props.isValid(false)
+            
+            props.isMinted(true)
+            
+            setTimeout(() => {
+                props.isMinted(false)
+            }, 3000);
 
             const {nft} = await metaplex.nfts().create({
                 uri: uri,
@@ -56,15 +64,9 @@ const NftMintButton = (props) => {
 
             console.log(nft)
 
-            props.isMinted(true)
-            
-            setTimeout(() => {
-                props.isMinted(false)
-            }, 3000);
-
             setTimeout(() => {
                 window.location.reload();
-            }, 1000)
+            }, 5000)
 
             // console.log(
             //     `Token Mint: https://explorer.solana.com/address/${nft.address.toString()}?cluster=devnet`

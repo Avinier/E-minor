@@ -13,7 +13,7 @@ export default async function handler(req : NextApiRequest, res : NextApiRespons
 
               const completion = await openai.createCompletion({
                 model: "text-davinci-003",
-                prompt: `Check if a song has this lyrics- "${req.body.lyrics}". If yes, then reply with the song name and artist only (without any extra words, and song and artist should be seperated by a '-'). And if no, then reply with a 'no'`,
+                prompt: `Check if a song of this lyrics exists- "${req.body.lyrics}". If yes, then reply with the song name and artist only (without any extra words, and song and artist should be seperated by a '-'). And if no, then reply with a 'no'. Double check it, most of the time the lyrics exists, and remember, reply with song name and artist only.`,
                 max_tokens: 250,
                 temperature: 0,
               });

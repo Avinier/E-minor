@@ -48,12 +48,12 @@ const Explore : FC = () => {
                 <h3 className="text-accent font-sans text-[20px] pb-[25px]">Look at the NFTS of the most iconic lyrics in recent times.</h3>
             </article>
             <div className="grid grid-cols-3 gap-[30px] px-[75px]">
-                <NftCard image="/nochurchinthewild.jpg" songData={SONG_DATA[0]}/>
+                {/* <NftCard image="/nochurchinthewild.jpg" songData={SONG_DATA[0]}/>
                 <NftCard image="/blindinglights.jpg" songData={SONG_DATA[5]}/>
                 <NftCard image="/praisethelord.jpeg" songData={SONG_DATA[2]}/>
                 <NftCard image="/stan.jpeg" songData={SONG_DATA[3]}/>
                 <NftCard image="/crazyinlove.jpeg" songData={SONG_DATA[4]}/>
-                <NftCard image="/numbencore.jpeg" songData={SONG_DATA[1]}/>
+                <NftCard image="/numbencore.jpeg" songData={SONG_DATA[1]}/> */}
             </div>
         </section>
     );
