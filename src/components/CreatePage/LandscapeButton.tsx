@@ -78,7 +78,7 @@ const LandscapeButton = (props) => {
     return (
         <>
             <button className="w-[35%] px-[50px] py-[15px] ml-[66.5%] bg-gold text-accent font-bold text-[20px] rounded-lg" onClick={() => {setScape(true)}}>
-                'Scape it!
+            &apos;Scape it!
             </button>
             {scape && <Landscape image={props.image} song={props.song} lyrics={props.lyrics} download={downloadHandler} tweet={tweetHandler}/>}
             <div className="">
