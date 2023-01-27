@@ -81,7 +81,7 @@ const LandscapeButton = (props) => {
             &apos;Scape it!
             </button>
             {scape && <Landscape image={props.image} song={props.song} lyrics={props.lyrics} download={downloadHandler} tweet={tweetHandler}/>}
-            <div className="">
+            <div className="opacity-0">
                 {scape && <FinalLandscape image={props.image} song={props.song} lyrics={props.lyrics} download={downloadHandler}/>}
             </div>
         </>
