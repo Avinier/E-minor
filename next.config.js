@@ -9,6 +9,12 @@ const nextConfig = {
         port: "",
         pathname: "/pbxt/**",
       },
+      {
+        protocol: "https",
+        hostname: "storage.googleapis.com",
+        port: "",
+        pathname: "/e-minor-assets/**",
+      },
     ],
   },
 };

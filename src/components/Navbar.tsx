@@ -16,7 +16,7 @@ const Navbar : FC = () => {
                 <div className="">
                     <Link href="/create">Create</Link>
                 </div>
-                <div className=" cursor-not-allowed">
+                <div className="cursor-not-allowed">
                     <Link href="/explore">Explore</Link>
                 </div>
                 <div className={navClasses.wallet}>

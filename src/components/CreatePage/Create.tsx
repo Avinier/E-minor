@@ -33,6 +33,7 @@ import Landscape from "./Landscape";
 
 const Create : FC = () => {
     const [imageUrl, setImageUrl] = useState<string>(null)
+    const [wallpaperUrl, setWallpaperUrl] = useState<string>(null)
     const [songData, setSongData] = useState<string>("")
     const [songName, setSongName] = useState<string>("")
     const [value, setValue] = useState<string>(null)
@@ -53,6 +54,7 @@ const Create : FC = () => {
                         setImage={setImageUrl} 
                         setSongData={setSongData} 
                         setSongName={setSongName} 
+                        setWallpaper={setWallpaperUrl}
                         songData={songData} 
                         isValid={setIsValidLyrics} 
                         value={value}
@@ -77,7 +79,7 @@ const Create : FC = () => {
                     {imageUrl && <NftMintButton image={imageUrl} song={songName} songData={songData} isValid={setIsValidLyrics} isMinted={setIsMinted}/>}
                 </div>
             </div>
-            {imageUrl && <LandscapeButton image={imageUrl} song={songData} lyrics={value}/>}
+            {imageUrl && <LandscapeButton image={imageUrl} wallpaper={wallpaperUrl} song={songData} lyrics={value}/>}
         </section>
     )
 }

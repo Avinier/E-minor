@@ -50,6 +50,7 @@ const Generate = (props) => {
       const data = await imgResponse.json()
       console.log(data)
       props.setImage(data.result)
+      props.setWallpaper(data.wallpaper)
 
       } else {
         props.isValid(false)
