@@ -3,6 +3,7 @@ import { useEffect, useState} from "react"
 import {Carousel}  from 'react-responsive-carousel';
 import Link from "next/link";
 import ImageAnimations from "../ImageAnimations";
+import classes from "../../styles/Hero.module.css"
 
 import { useRef } from "react";
 import {
@@ -29,7 +30,7 @@ export default function Hero() {
                 setAnimate(true)
             }
             if (400 < latest) {
-                setScrolled(true)
+                // setScrolled(true)
             }
         })
     }, [])
@@ -106,7 +107,7 @@ export default function Hero() {
             <Image src="https://storage.googleapis.com/e-minor-assets/public/starboy-2.png" alt="egt" width={300} height={300} className="rounded-lg"/>
         </motion.div>
         }
-        {scrolled && 
+        {/* {scrolled && 
         <motion.section className="flex absolute top-[85vh] w-[200vw] z-10 overflow-x-hidden">
             <motion.div className="px-[30px]">
                 <Image src="https://storage.googleapis.com/e-minor-assets/public/starboy.jpeg" alt="detg" width={300} height={300} className="rounded-lg"/>
@@ -133,7 +134,7 @@ export default function Hero() {
                 <Image src="/yellow-2.png" alt="detg" width={300} height={300} className="rounded-lg"/>
             </motion.div>
         </motion.section>
-        }
+        } */}
         {/* <motion.div className="rounded-lg absolute top-[100%] left-[5%]">
             <Image src="/pride.png" alt="egt" width={300} height={300} className="rounded-lg"/>
         </motion.div>
@@ -143,9 +144,9 @@ export default function Hero() {
         <section className="px-[150px] z-10">
             <div className="py-[100px] flex justify-between items-center">
                 <div className="">
-                    <h1 className="text-[80px] font-sans font-black leading-[80px] text-accent text-center">Your favourite song. Visualized.</h1>
+                    <h1 className={`text-[80px] font-sans font-black leading-[80px] text-accent text-center`}>Your favourite song. <span className={`${classes.heading}`}>Visualized.</span></h1>
                     <h3 className="text-accent font-sans text-[25px] py-[30px] text-center">Get beautiful AI-generated art out of your favourite song verses</h3>
-                    <button className="bg-accent w-fit font-sans font-bold rounded-md px-[30px] py-[12px] ml-[40%]">
+                    <button className={` ${classes.ctabutton} bg-accent w-fit font-sans font-bold rounded-md px-[30px] py-[12px] ml-[40%]`}>
                         <Link href="/create">Visualize a verse</Link>
                     </button>
                 </div>
