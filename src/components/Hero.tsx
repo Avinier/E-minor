@@ -143,10 +143,10 @@ export default function Hero() {
         </motion.div> */}
         <section className="px-[150px] z-10">
             <div className="py-[100px] flex justify-between items-center">
-                <div className="">
-                    <h1 className={`text-[80px] font-sans font-black leading-[80px] text-accent text-center`}>Your favourite song. <span className={`${classes.heading}`}>Visualized.</span></h1>
-                    <h3 className="text-accent font-sans text-[25px] py-[30px] text-center">Get beautiful AI-generated art out of your favourite song verses</h3>
-                    <button className={` ${classes.ctabutton} bg-accent w-fit font-sans font-bold rounded-md px-[30px] py-[12px] ml-[40%]`}>
+                <div className="font-sans">
+                    <h1 className={`text-[80px] font-black leading-[80px] text-accent text-center`}>Your favourite song. <span className={`${classes.heading}`}>Visualized.</span></h1>
+                    <h3 className="text-accent text-[25px] py-[30px] text-center">Get beautiful AI-generated art out of your favourite song verses</h3>
+                    <button className={` ${classes.ctabutton} bg-accent w-fit font-bold rounded-md px-[30px] py-[12px] ml-[40%]`}>
                         <Link href="/create">Visualize a verse</Link>
                     </button>
                 </div>

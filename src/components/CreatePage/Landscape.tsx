@@ -16,7 +16,7 @@ const Landscape = (props) => {
                         </div>
                         <div className="mx-auto w-[80%] ml-[90px] flex justify-around z-10">
                             <button className="bg-accent px-[50px] py-[20px] rounded-lg text-[#111] w-[40%] cursor-pointer hover:bg-purple-50 z-100" onClick={props.download}>Download</button>
-                            <button className="bg-accent px-[50px] py-[20px] rounded-lg text-[#111] w-[40%] cursor-not-allowed" onClick={props.tweet}>Tweet it!</button>
+                            <button className="bg-accent px-[50px] py-[20px] rounded-lg text-[#111] w-[40%]" onClick={props.tweet}>Tweet it!</button>
                         </div>
                     </div>
                     

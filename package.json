@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@metaplex-foundation/js": "^0.17.12",
-    "@next/font": "13.0.7",
+    "@next/font": "^13.0.7",
     "@solana/spl-token": "^0.3.6",
     "@solana/wallet-adapter-base": "^0.9.20",
     "@solana/wallet-adapter-phantom": "^0.9.19",
@@ -34,6 +34,7 @@
     "http-proxy-middleware": "^2.0.6",
     "image-to-base64": "^2.2.0",
     "next": "13.0.7",
+    "next-auth": "^4.19.2",
     "node-base64-image": "^2.0.4",
     "node-fetch": "^3.3.0",
     "nodemon": "^2.0.20",
@@ -48,6 +49,7 @@
     "replicate-js": "github:nicholascelestin/replicate-js",
     "twitter": "^1.7.1",
     "twitter-api-sdk": "^1.2.1",
+    "twitter-lite": "^1.1.0",
     "typescript": "4.9.4",
     "typewriter-effect": "^2.19.0"
   },

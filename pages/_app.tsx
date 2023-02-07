@@ -1,5 +1,9 @@
 import React, { useMemo } from "react";
 import { AppProps } from 'next/app';
+import { SessionProvider } from "next-auth/react";
+
+import localFont from '@next/font/local';
+
 import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
 import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
 import { ConnectionProvider, WalletProvider } from "@solana/wallet-adapter-react";
@@ -16,8 +20,29 @@ import Navbar from "../src/components/Navbar";
 
 import Script from 'next/script'
 
+// const gotham = localFont({
+//   src : [
+//     {
+//       path: '../public/fonts/GothamBook.ttf',
+//       weight: '400'
+//     },
+//     {
+//       path: '../public/fonts/Gotham-Bold.otf',
+//       weight: '600'
+//     },
+//     {
+//       path: '../public/fonts/Gotham-Black.otf',
+//       weight: '700'
+//     },
+//     {
+//       path: '../public/fonts/GothamMedium.ttf',
+//       weight: '500'
+//     },
+//   ]
+// })
+
 const App = ({ Component, pageProps }: AppProps) => {
-  // Can be set to 'devnet', 'testnet', or 'mainnet-beta'
+  // Can be set to 'devnet', 'testnet', or 'mainnet-beta' 
   const network = WalletAdapterNetwork.Devnet;
 
   // You can provide a custom RPC endpoint here
@@ -39,6 +64,13 @@ const App = ({ Component, pageProps }: AppProps) => {
       <WalletProvider wallets={wallets} autoConnect>
         <WalletModalProvider>
           <MetaplexContextProvider>
+          {/* <style jsx global>
+            {
+              `:root : {
+                --gotham-font : ${gotham.style.fontFamily}
+              }`
+            }
+          </style> */}
           <Script strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"/>
           <Script
             id='google-analytics'
@@ -54,8 +86,10 @@ const App = ({ Component, pageProps }: AppProps) => {
                 `,
               }}
           />
-            <Navbar/>
-            <Component {...pageProps} />
+          <SessionProvider session={pageProps.session}>
+              <Navbar/>
+              <Component {...pageProps} />
+          </SessionProvider>
           </MetaplexContextProvider>
         </WalletModalProvider>
       </WalletProvider>

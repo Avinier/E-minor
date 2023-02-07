@@ -25,12 +25,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const model = await replicate.models.get("stability-ai/stable-diffusion", "27b93a2413e7f36cd83da926f3656280b2931564ff050bf9575f1fdf9bcd7478");
       const output = await model.predict({ prompt: `An illustration of the lyrics '${req.body.lyrics}'. ${req.body.song}. ${artStyle[randNum][0]}`, 
                                             negative_prompt: "no text, no hands, no duplication, no dispropotion", 
-                                            num_inference_steps: 90,
+                                            num_inference_steps: 95,
                                             scheduler: "K_EULER",
                                             guidance_scale: 7,
                                             width: 512, height: 512
                                           });
-      res.status(200).json({ result: `${output}`, style: `${artStyle[randNum]}`, wallpaper: `${artStyle[randNum][1]}` });
+      res.status(200).json({ result: `${output}`, style: `${artStyle[randNum][0]}`, wallpaper: `${artStyle[randNum][1]}` });
 
     } catch (err) {
       console.log(err);
